@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CourtController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +15,15 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [UserController::class, 'index']);
+
+Route::get('/login', [UserController::class, 'index']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+Route::get('/', [CourtController::class, 'index']);
+Route::get('/court/{name}', [CourtController::class, 'show']);
