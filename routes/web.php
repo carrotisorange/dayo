@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourtController;
+use App\Http\Controllers\NewsLetterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,9 @@ use App\Http\Controllers\CourtController;
 */
 
 Route::get('/login', [UserController::class, 'index']);
+
+Route::get('/newsletter', [NewsletterController::class, 'create']);
+Route::post('/newsletter', [NewsletterController::class, 'store']);
 
 
 Route::get('/dashboard', function () {

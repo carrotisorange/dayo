@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                {{-- <img src="{{ asset('/img/icon.ico') }}" /> --}}
+                {{-- <img src="{{ asset('/logo_2.png') }}" /> --}}
             </a>
         </x-slot>
 
@@ -11,6 +11,7 @@
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
