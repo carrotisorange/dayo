@@ -24,7 +24,7 @@ class NewsLetterController extends Controller
      */
     public function create()
     {
-        return view('newsletter.show');
+        return view('newsletter.create');
     }
 
     /**

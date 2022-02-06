@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+
 class CourtFactory extends Factory
 {
     /**
@@ -22,6 +23,7 @@ class CourtFactory extends Factory
             'city_id' => $this->faker->numerify('#'),
             'province_id' => $this->faker->numerify('#'),
             'country_id' => $this->faker->numerify('#'),
+            'user_id' => '1'
         ];
     }
 }

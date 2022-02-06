@@ -17,27 +17,38 @@ class Court extends Model
         'barangay_id',
         'city_id',
         'province_id',
-        'country_id'
+        'country_id',
+        'user_id'
     ];
 
-    public function region(){
+    public function region()
+    {
         return $this->belongsTo(Region::class, 'region_id');
     }
 
-    public function barangay(){
+    public function barangay()
+    {
         return $this->belongsTo(Barangay::class, 'barangay_id');
     }
 
-    public function city(){
+    public function city()
+    {
         return $this->belongsTo(City::class, 'city_id');
     }
 
-    public function province(){
+    public function province()
+    {
         return $this->belongsTo(Province::class, 'province_id');
     }
 
-    public function country(){
+    public function country()
+    {
         return $this->belongsTo(Country::class, 'country_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
     
 }

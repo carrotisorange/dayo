@@ -9,7 +9,13 @@ class Country extends Model
 {
     use HasFactory;
 
-    public function courts(){
+    public function courts()
+    {
         return $this->hasMany(Court::class);
+    }
+
+    public function scopeidDescending($query)
+    {
+        return $query->orderBy('country', 'ASC');
     }
 }

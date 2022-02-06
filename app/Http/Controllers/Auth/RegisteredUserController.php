@@ -39,6 +39,7 @@ class RegisteredUserController extends Controller
             'username' => ['required', 'string', 'max:255','unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'role' => ['required']
         ]);
 
 
@@ -48,6 +49,7 @@ class RegisteredUserController extends Controller
                 'email' => $request->email,
                 'username' =>$request->username, 
                 'password' => bcrypt($request->password),
+                'userRole' => $request->role
             ]
         );
 

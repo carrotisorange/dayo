@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourtController;
 use App\Http\Controllers\NewsLetterController;
+use App\Http\Controllers\UserCourtController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,16 +19,23 @@ use App\Http\Controllers\NewsLetterController;
 */
 
 Route::get('/login', [UserController::class, 'index']);
+Route::get('/user/{username}', [UserController::class, 'edit'])->name('profile');
+Route::put('/user/{username}', [UserController::class, 'update']);
 
-Route::get('/newsletter', [NewsletterController::class, 'create']);
+Route::get('/newsletter', [NewsletterController::class, 'create'])->name('newsletter');
 Route::post('/newsletter', [NewsletterController::class, 'store']);
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
-Route::get('/', [CourtController::class, 'index']);
+Route::get('/', [CourtController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::get('/dashboard', [CourtController::class, 'index'])->name('dashboard');
+
+
+Route::get('/court/create', [CourtController::class, 'create'])->middleware('auth')->name('create-court')->middleware('provider');
+Route::post('/store', [CourtController::class, 'store'])->middleware('auth');
 Route::get('/court/{name}', [CourtController::class, 'show']);
+
+
+Route::get('/my-courts', [UserCourtController::class, 'index']);
+Route::get('/my-courts/{id}', [UserCourtController::class, 'edit']);
+

@@ -9,7 +9,13 @@ class Barangay extends Model
 {
     use HasFactory;
 
-    public function courts(){
+    public function courts()
+    {
         return $this->hasMany(Court::class);
+    }
+
+    public function scopeIdDescending($query)
+    {
+        return $query->orderBy('barangay', 'ASC');
     }
 }

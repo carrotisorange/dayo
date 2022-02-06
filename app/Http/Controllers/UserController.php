@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\User;
+
 class Usercontroller extends Controller
 {
     /**
@@ -45,7 +47,7 @@ class Usercontroller extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -54,9 +56,13 @@ class Usercontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($username)
     {
-        //
+        $user = User::where('username', $username)->firstOrFail();
+
+        return view('users.edit', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -66,9 +72,23 @@ class Usercontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $username)
     {
-        //
+
+        request()->validate([
+            'name' => 'required|max:255',
+            'username' => 'required|unique:users|max:255',
+            'email' => 'required|email|unique:users'
+        ]);
+
+        User::where('username', $username)
+        ->update([
+            'name' => request('name'),
+            'username' => request('username'),
+            'email' => request('email')
+        ]);
+
+        return redirect('/user/'.request('username'));
     }
 
     /**

@@ -1,6 +1,6 @@
 @section('title', '| Newsletter')
 
-<x-guest-layout>
+<x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div
@@ -18,12 +18,12 @@
                     @csrf
                     <div class="flex items-stretch mt-12">
                         <input
-                            class="bg-gray-100 rounded-lg rounded-r-none text-base leading-none text-gray-800 p-5 w-4/5 border border-transparent focus:outline-none focus:border-gray-500"
+                            class="bg-white-100 rounded-lg rounded-r-none text-base leading-none text-gray-800 p-5 w-4/5 border border-transparent focus:outline-none focus:border-gray-500"
                             name="email"
                             type="email" 
                             placeholder="Your Email" />
-                        <button
-                            class="w-32 rounded-l-none hover:bg-orange-600 bg-orange-700 rounded text-base font-medium leading-none text-white p-5 uppercase focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-700">subscribe</button>
+                        <x-button
+                            >subscribe</x-button>
                     
                        
                         </div>
@@ -35,4 +35,4 @@
             </div>
         </div>
     </div>
-</x-guest-layout>
+</x-app-layout>
