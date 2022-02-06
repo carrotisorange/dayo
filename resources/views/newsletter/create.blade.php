@@ -16,7 +16,7 @@
                     {{-- <p class="text-base leading-normal text-gray-600 text-center xl:text-left">.</p> --}}
                     <form action="/newsletter" method="POST">
                     @csrf
-                    <div class="flex items-stretch mt-12">
+                    <div class="flex items-stretch mt-10">
                         <input
                             class="bg-white-100 rounded-lg rounded-r-none text-base leading-none text-gray-800 p-5 w-4/5 border border-transparent focus:outline-none focus:border-gray-500"
                             name="email"
