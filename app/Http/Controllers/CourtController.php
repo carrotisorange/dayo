@@ -10,6 +10,8 @@ use App\Models\City;
 use App\Models\Barangay;
 use Illuminate\Http\Request;
 use Stevebauman\Location\Facades\Location;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -22,20 +24,16 @@ class CourtController extends Controller
      */
     public function index(Request $request)
     {
-
         $courts = Court::all();
 
         $address = Location::get('https://'.$request->ip()); 
 
-        if($request->getCurrentLocation){
+        if($address){
             $currentLocation = $address->cityName.', '.$address->regionName.','.$address->countryName;
         }else{
             $currentLocation="";
         }
         
-
-       
-
         return view('courts.index', 
         [
             'courts'=>$courts,
@@ -77,31 +75,23 @@ class CourtController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(
+        $attributes = request()->validate(
             [
-                'name' => 'required|max:255',
-                'mobileNumber' => 'required',
-                'country_id' => 'required',
-                'region_id' => 'required',
-                'province_id' => 'required',
-                'city_id' => 'required',
-                'barangay_id' => 'required',
+                'court' => 'required|max:255',
+                'mobileNumber' => 'required|integer',
+                'country_id' => ['required', Rule::exists('countries', 'id')],
+                'region_id' => ['required', Rule::exists('regions', 'id')],
+                'province_id' => ['required', Rule::exists('provinces', 'id')],
+                'city_id' => ['required', Rule::exists('cities', 'id')],
+                'barangay_id' => ['required', Rule::exists('barangays', 'id')],
                 'description' => 'nullable'
             ]
         );
 
-        $court = Court::create(
-            [
-                'name' => request('name'),
-                'mobileNumber' => request('mobileNumber'),
-                'country_id' => request('country_id'),
-                'region_id' => request('region_id'),
-                'province_id' => request('province_id'),
-                'city_id' => request('city_id'),
-                'barangay_id' => request('barangay_id'),
-                'user_id' => Auth::user()->id
-            ]
-        );
+        $attributes['user_id'] = Auth::user()->id;
+        $attributes['slug'] = Str::slug($request->court.' '.Str::random(10), '-');
+
+        $court = Court::create($attributes);
 
         return redirect('/court/'.$court->id);
     }
@@ -114,8 +104,6 @@ class CourtController extends Controller
      */
     public function show(Court $court)
     {
-        $court = Court::findOrFail(1);
-
         return view('courts.show',['court'=>$court]);
     }
 

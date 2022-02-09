@@ -10,7 +10,8 @@ class Court extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'court',
+        'slug',
         'description',
         'mobileNumber',
         'region_id',
@@ -20,6 +21,11 @@ class Court extends Model
         'country_id',
         'user_id'
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function region()
     {

@@ -15,9 +15,9 @@
 
             <!-- Role -->
             <div class="mt-4">
-                <x-label for="role" :value="__('Role')" />
-                <x-select id="role" name="role" required>
-                    <option value="">Select one</option>
+                <x-label for="userRole" :value="__('Role')" />
+                <x-select id="userRole" name="userRole" required>
+                    <option value="" {{ old('userRole')? old('userRole'): 'Select one' }}>Select one</option>
                     <option value="player">player</option>
                     <option value="provider">provider</option>
                 </x-select>

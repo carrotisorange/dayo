@@ -28,12 +28,10 @@ Route::post('/newsletter', [NewsletterController::class, 'store']);
 require __DIR__.'/auth.php';
 
 Route::get('/', [CourtController::class, 'index'])->middleware('auth')->name('dashboard');
-Route::get('/dashboard', [CourtController::class, 'index'])->name('dashboard');
-
 
 Route::get('/court/create', [CourtController::class, 'create'])->middleware('auth')->name('create-court')->middleware('provider');
 Route::post('/store', [CourtController::class, 'store'])->middleware('auth');
-Route::get('/court/{name}', [CourtController::class, 'show']);
+Route::get('/court/{court:slug}', [CourtController::class, 'show']);
 
 
 Route::get('/my-courts', [UserCourtController::class, 'index']);

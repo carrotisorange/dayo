@@ -15,7 +15,8 @@ class CourtFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            'court' => $this->faker->name(),
+            'slug' => $this->faker->word,
             'description' => $this->faker->sentence(),
             'mobileNumber' => $this->faker->phoneNumber(),
             'region_id' => $this->faker->numerify('#'),

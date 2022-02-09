@@ -45,13 +45,13 @@
                                                 {{ $court->id }}
                                             </td>
                                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ $court->name }}
+                                                <a href="/court/{{ $court->slug }}">{{ $court->court }}</a>
                                             </td>
                                             <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                 {{ $court->description }}
                                             </td>
                                             <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                {{ $court->barangay->barangay.', '.$court->region->region.', '.$court->region->province.', '.$court->region->region }}
+                                                {{ $court->barangay.', '.$court->region.', '.$court->region.', '.$court->region }}
                                             </td>
                                             <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                 $2999
@@ -61,12 +61,18 @@
                                             </td>
                                         </tr>
                                    @endforeach
-            
+                                        
                                
                                 </tbody>
+                               
                             </table>
+                            
+                        </div>
+                        <div class="mt-5 p-5">
+                            {{ $courts->links() }}
                         </div>
                     </div>
+                    
                 </div>
             </div>
             </div>

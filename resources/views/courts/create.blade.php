@@ -18,9 +18,9 @@
 
             <!-- Name -->
             <div class="mt-4"> 
-                <x-label for="name" :value="__('Name')" />
+                <x-label for="court" :value="__('Court')" />
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" 
+                <x-input id="court" class="block mt-1 w-full" type="text" name="court" :value="old('court')" 
                     required autofocus />
             </div>
 
@@ -28,7 +28,7 @@
             <div class="mt-4">
                 <x-label for="mobileNumber" :value="__('Mobile number')" />
 
-                <x-input id="mobileNumber" class="block mt-1 w-full" type="text" name="mobileNumber" required />
+                <x-input id="mobileNumber" class="block mt-1 w-full" type="text" name="mobileNumber" required/>
             </div>
 
             <!-- Country -->
@@ -37,7 +37,7 @@
                 <x-select id="country_id" name=" country_id" required>
                     <option value="">Select one</option>
                     @foreach ($countries as $country)
-                    <option value="{{ $country->id }}">{{ $country->country }}</option>
+                    <option value="{{ $country->id }}" {{ old('country_id') == $country->id? 'selected': 'Select one' }}>{{ $country->country }}</option>
                     @endforeach
                 </x-select>
 
@@ -49,7 +49,7 @@
                 <x-select id="region_id" name="region_id" required>
                     <option value="">Select one</option>
                     @foreach ($regions as $region)
-                    <option value="{{ $region->id }}">{{ $region->region }}</option>
+                    <option value="{{ $region->id }}" {{ old('region_id') == $region->id? 'selected': 'Select one' }}>{{ $region->region }}</option>
                     @endforeach
                 </x-select>
 
@@ -61,7 +61,7 @@
                 <x-select id="province_id" name="province_id" required>
                     <option value="">Select one</option>
                     @foreach ($provinces as $province)
-                    <option value="{{ $province->id }}">{{ $province->province }}</option>
+                    <option value="{{ $province->id }}" {{ old('province_id') == $province->id? 'selected': 'Select one' }}>{{ $province->province }}</option>
                     @endforeach
                 </x-select>
 
@@ -73,7 +73,7 @@
                 <x-select id="city_id" name="city_id" required>
                     <option value="">Select one</option>
                     @foreach ($cities as $city)
-                    <option value="{{ $city->id }}">{{ $city->city }}</option>
+                    <option value="{{ $city->id }}" {{ old('city_id') == $city->id? 'selected': 'Select one' }}>{{ $city->city }}</option>
                     @endforeach
                 </x-select>
 
@@ -85,7 +85,7 @@
                 <x-select id="barangay_id" name="barangay_id" required>
                     <option value="">Select one</option>
                     @foreach ($barangays as $barangay)
-                    <option value="{{ $barangay->id }}">{{ $barangay->barangay }}</option>
+                    <option value="{{ $barangay->id }}" {{ old('barangay_id') == $barangay->id? 'selected': 'Select one' }}>{{ $barangay->barangay }}</option>
                     @endforeach
                 </x-select>
 

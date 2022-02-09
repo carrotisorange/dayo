@@ -15,7 +15,8 @@ class CreateCourtsTable extends Migration
     {
         Schema::create('courts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('court');
+            $table->string('slug');
             $table->string('description')->nullable();
             $table->string('mobileNumber');
             $table->foreignId('region_id')->constrained();
@@ -23,7 +24,6 @@ class CreateCourtsTable extends Migration
             $table->foreignId('city_id')->constrained();
             $table->foreignId('province_id')->constrained();
             $table->foreignId('country_id')->constrained();
-
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });

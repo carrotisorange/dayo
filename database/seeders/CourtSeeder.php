@@ -13,6 +13,6 @@ class CourtSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Court::factory(100)->create();
+        \App\Models\Court::factory(10)->create();
     }
 }
