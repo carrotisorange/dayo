@@ -19,7 +19,8 @@ class Court extends Model
         'city_id',
         'province_id',
         'country_id',
-        'user_id'
+        'user_id',
+        'thumbnail'
     ];
 
     public function getRouteKeyName()

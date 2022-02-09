@@ -84,16 +84,18 @@ class CourtController extends Controller
                 'province_id' => ['required', Rule::exists('provinces', 'id')],
                 'city_id' => ['required', Rule::exists('cities', 'id')],
                 'barangay_id' => ['required', Rule::exists('barangays', 'id')],
-                'description' => 'nullable'
+                'description' => 'nullable',
+                'thumbnail' => 'required|image'
             ]
         );
 
         $attributes['user_id'] = Auth::user()->id;
         $attributes['slug'] = Str::slug($request->court.' '.Str::random(10), '-');
+        $attributes['thumbnail'] = $request->file('thumbnail')->store('thumbnails');
 
         $court = Court::create($attributes);
 
-        return redirect('/court/'.$court->id);
+        return redirect('/court/'.$court->slug);
     }
 
     /**

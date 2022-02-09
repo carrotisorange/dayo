@@ -8,7 +8,7 @@
         </x-slot>
 
 
-        <form method="POST" action="/store">
+        <form method="POST" action="/store" enctype="multipart/form-data">
             @csrf
 
             <div >
@@ -28,7 +28,7 @@
             <div class="mt-4">
                 <x-label for="mobileNumber" :value="__('Mobile number')" />
 
-                <x-input id="mobileNumber" class="block mt-1 w-full" type="text" name="mobileNumber" required/>
+                <x-input id="mobileNumber" class="block mt-1 w-full" type="number" name="mobileNumber" required/>
             </div>
 
             <!-- Country -->
@@ -89,6 +89,13 @@
                     @endforeach
                 </x-select>
 
+            </div>
+
+            <!-- Image -->
+            <div class="mt-4">
+                <x-label for="thumbnail" :value="__('Image')" />
+            
+                <x-input id="thumbnail" class="block mt-1 w-full" type="file" name="thumbnail" required />
             </div>
 
             <div class="flex items-center justify-end mt-4">

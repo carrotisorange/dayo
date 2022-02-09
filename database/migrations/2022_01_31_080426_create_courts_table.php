@@ -25,6 +25,7 @@ class CreateCourtsTable extends Migration
             $table->foreignId('province_id')->constrained();
             $table->foreignId('country_id')->constrained();
             $table->foreignId('user_id')->constrained();
+            $table->string('thumbnail')->nullable();
             $table->timestamps();
         });
     }

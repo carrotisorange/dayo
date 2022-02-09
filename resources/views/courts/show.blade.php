@@ -13,7 +13,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white">
                   <div class="flex flex-wrap justify-center">
-                    <img src="https://mdbootstrap.com/img/new/standard/city/041.jpg" class="p-1 bg-white border rounded max-w-sm"
+                    <img src="/storage/{{ $court->thumbnail }}" class="p-1 bg-white border rounded max-w-sm"
                         alt="..." />
                 </div>
                 </div>
