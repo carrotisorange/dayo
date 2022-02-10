@@ -77,7 +77,7 @@ class CourtController extends Controller
     {
         $attributes = request()->validate(
             [
-                'court' => 'required|max:255',
+                'court' => 'required|max:255|string',
                 'mobileNumber' => 'required|integer',
                 'country_id' => ['required', Rule::exists('countries', 'id')],
                 'region_id' => ['required', Rule::exists('regions', 'id')],

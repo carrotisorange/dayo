@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 
 class CourtFactory extends Factory
@@ -15,16 +16,16 @@ class CourtFactory extends Factory
     public function definition()
     {
         return [
-            'court' => $this->faker->name(),
-            'slug' => $this->faker->word,
-            'description' => $this->faker->sentence(),
+            'court' => $this->faker->title(),
+            'slug' => Str::slug($this->faker->sentence,'-'),
+            'description' => $this->faker->paragraph(),
             'mobileNumber' => $this->faker->phoneNumber(),
             'region_id' => $this->faker->numerify('#'),
             'barangay_id' => $this->faker->numerify('#'),
             'city_id' => $this->faker->numerify('#'),
             'province_id' => $this->faker->numerify('#'),
             'country_id' => $this->faker->numerify('#'),
-            'user_id' => '1'
+            'user_id' => '2'
         ];
     }
 }

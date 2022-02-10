@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Validation\Rule;
+use App\Models\Role;
 
 class RegisteredUserController extends Controller
 {
@@ -20,7 +22,11 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $roles = Role::all();
+
+        return view('auth.register',[
+            'roles' => $roles
+        ]);
     }
 
     /**
@@ -33,13 +39,12 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-
     $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255','unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'userRole' => ['required']
+            'role_id' => ['required', Rule::exists('roles', 'id')],
         ]);
 
 
@@ -49,7 +54,7 @@ class RegisteredUserController extends Controller
                 'email' => $request->email,
                 'username' =>$request->username, 
                 'password' => bcrypt($request->password),
-                'userRole' => $request->role
+                'role_id' => $request->role_id
             ]
         );
 

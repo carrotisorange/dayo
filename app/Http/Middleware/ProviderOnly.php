@@ -16,7 +16,7 @@ class ProviderOnly
      */
     public function handle(Request $request, Closure $next)
     {   
-        if(auth()->user()->userRole === "player"){
+        if(auth()->user()->role_id == 1){
             abort(403);
         }
 

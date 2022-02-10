@@ -15,11 +15,12 @@
 
             <!-- Role -->
             <div class="mt-4">
-                <x-label for="userRole" :value="__('Role')" />
-                <x-select id="userRole" name="userRole" required>
-                    <option value="" {{ old('userRole')? old('userRole'): 'Select one' }}>Select one</option>
-                    <option value="player">player</option>
-                    <option value="provider">provider</option>
+                <x-label for="role_id" :value="__('Role')" />
+                <x-select id="role_id" name="role_id" required>
+                    <option value="">Select one</option>
+                    @foreach ($roles as $role)
+                        <option value="{{ $role->id }}" {{ old('role_id') == $role->id? 'selected': 'Select one' }}>{{ $role->role }}</option>
+                    @endforeach
                 </x-select>
 
             </div>

@@ -1,4 +1,4 @@
-@section('title', '| Create')
+@section('title', '| Profile')
 
 <x-app-layout>
 

@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             CourtSeeder::class,
             RegionSeeder::class,
             CountrySeeder::class,
-            BarangaySeeder::class
+            BarangaySeeder::class,
+            RoleSeeder::class,
         ]);
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -22,7 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'userRole'
+        'role_id'
     ];
 
     /**
@@ -44,7 +44,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function courts(){
+    public function courts()
+    {
         return $this->hasMany(Court::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
     }
 }

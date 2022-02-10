@@ -16,10 +16,20 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body>
+    <body class="font-sans antialiased">
+            <div class="min-h-screen bg-gray-100">
+               
         
-        <div class="font-sans text-gray-900 antialiased">
-            {{ $slot }}
-        </div>
-    </body>
+                <main>
+                    {{ $slot }}
+        
+        
+                </main>
+        
+                <div class="sticky top-[100vh] mt-10">
+                    @include('layouts.footer')
+                </div>
+            </div>
+        
+        </body>
 </html>

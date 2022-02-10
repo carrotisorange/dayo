@@ -17,7 +17,7 @@ class CreateCourtsTable extends Migration
             $table->id();
             $table->string('court');
             $table->string('slug');
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('mobileNumber');
             $table->foreignId('region_id')->constrained();
             $table->foreignId('barangay_id')->constrained();

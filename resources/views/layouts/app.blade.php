@@ -34,7 +34,7 @@
                 
             </main>
 
-          <div class="sticky top-[100vh]">
+          <div class="sticky top-[100vh] mt-10">
               @include('layouts.footer')
           </div>
         </div>
