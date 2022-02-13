@@ -101,7 +101,7 @@
             <div class="mt-4">
                 <x-label for="thumbnail" :value="__('Image')" />
             
-                <x-input id="thumbnail" class="block mt-1 w-full" type="file" name="thumbnail" required />
+                <x-input id="thumbnail" value="{{ old('thumbail') }}" class="block mt-1 w-full" type="file" name="thumbnail" required />
 
                 <x-form.error name="thumbnail">
                 </x-form.error>
