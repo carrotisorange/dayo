@@ -11,24 +11,19 @@
         <form method="POST" action="/store" enctype="multipart/form-data">
             @csrf
 
-            <div >
-                <x-auth-validation-errors>
-                </x-auth-validation-errors>
-            </div>
-
             <!-- Name -->
             <div class="mt-4"> 
-                <x-label for="court" :value="__('Court')" />
+              <x-form.input name="court">
 
-                <x-input id="court" class="block mt-1 w-full" type="text" name="court" :value="old('court')" 
-                    required autofocus />
+              </x-form.input>
             </div>
+
 
             <!-- Mobile number -->
             <div class="mt-4">
-                <x-label for="mobileNumber" :value="__('Mobile number')" />
-
-                <x-input id="mobileNumber" class="block mt-1 w-full" type="number" name="mobileNumber" required/>
+                <x-form.input name="mobileNumber">
+                
+                </x-form.input>
             </div>
 
             <!-- Country -->
