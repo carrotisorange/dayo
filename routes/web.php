@@ -33,7 +33,7 @@ Route::get('/', [CourtController::class, 'index'])->middleware('auth')->name('da
 
 Route::get('court/create', [CourtController::class, 'create'])->middleware(['provider','verified'])->name('create-court');
 Route::post('store', [CourtController::class, 'store'])->middleware('auth');
-Route::get('court/{court:slug}', [CourtController::class, 'show']);
+Route::get('court/{court:slug}/edit', [CourtController::class, 'edit']);
 
 
 Route::get('my-courts', [UserCourtController::class, 'index']);

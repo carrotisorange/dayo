@@ -20,10 +20,10 @@
                                             class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                             Name
                                         </th>
-                                        <th scope="col"
+                                        {{-- <th scope="col"
                                             class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                             Description
-                                        </th>
+                                        </th>` --}}
                                         <th scope="col"
                                             class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                             Address
@@ -45,11 +45,11 @@
                                                 {{ $court->id }}
                                             </td>
                                             <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                <a href="/court/{{ $court->slug }}">{{ $court->court }}</a>
+                                                {{ $court->court }}</a>
                                             </td>
-                                            <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                {{ $court->description }}
-                                            </td>
+                                            {{-- <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                {{ substr($court->description,4) }}
+                                            </td> --}}
                                             <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                 {{ $court->barangay.', '.$court->region.', '.$court->region.', '.$court->region }}
                                             </td>
@@ -57,7 +57,7 @@
                                                 $2999
                                             </td>
                                             <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                                                <a href="/my-courts/{{ $court->id }}" class="text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                                <a href="/court/{{ $court->slug }}/edit"><span class="font-bold text-blue-600">Edit<span</a>
                                             </td>
                                         </tr>
                                    @endforeach

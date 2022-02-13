@@ -111,7 +111,7 @@ class CourtController extends Controller
      */
     public function show(Court $court)
     {
-        return view('courts.show',['court'=>$court]);
+        //
     }
 
     /**
@@ -122,7 +122,7 @@ class CourtController extends Controller
      */
     public function edit(Court $court)
     {
-        //
+        return view('courts.show',['court'=>$court]);
     }
 
     /**

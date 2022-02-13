@@ -8,7 +8,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <p class="text-center">Search term: <span class="text-red font-bold">{{ $currentLocation }}</span></p>
+            <p class="text-center">Results: <span class="text-red font-bold">{{ $currentLocation }}</span></p>
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
                     
