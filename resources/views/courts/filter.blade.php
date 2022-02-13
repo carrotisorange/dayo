@@ -19,8 +19,8 @@
                         </div>
                         <div class="grid grid-cols-9">
                         @foreach($courts as $court)
-                        <img src="/storage/{{ $court->thumbnail }}" class="p-2 bg-white border rounded max-w-sm mt-5 mx-5 ml-5 mr-5"
-                            alt="..." />
+                        <a href="/court/{{ $court->slug }}"><img src="/storage/{{ $court->thumbnail }}" class="p-2 bg-white border rounded max-w-sm mt-5 mx-5 ml-5 mr-5 hover:bg-orange-600"
+                            alt="..." /></a>
                         @endforeach
                 
                         </div>
