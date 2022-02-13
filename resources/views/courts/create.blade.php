@@ -31,6 +31,16 @@
                 </x-form.error>
             </div>
 
+            <!-- Price -->
+            <div class="mt-4">
+                <x-form.input name="price">
+            
+                </x-form.input>
+            
+                <x-form.error name="price" type="number">
+                </x-form.error>
+            </div>
+            
             <!-- Country -->
             <div class="mt-4 ">
                 <x-label for="country_id" :value="__('Country')" />

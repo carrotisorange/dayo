@@ -6,11 +6,11 @@
         <x-slot name="logo">
 
         </x-slot>
+        
 
-
-        <form method="POST" action="/user/{{ Auth::user()->username }}">
+        <form method="POST" action="/user/{{ Auth::user()->id }}">
             @csrf
-            @method('PUT')
+            @method('PATCH')
 
             <div>
                 <x-auth-validation-errors>
@@ -25,7 +25,7 @@
                     :value="old('name')?old('name'):$user->name" required autofocus />
             </div>
 
-            <!-- Name -->
+            <!-- username -->
             <div class="mt-4">
                 <x-label for="username" :value="__('Username')" />
 
@@ -33,17 +33,13 @@
                     :value="old('username')?old('username'):$user->username" required autofocus />
             </div>
 
-
-
-            <!-- Mobile number -->
+            <!-- Email -->
             <div class="mt-4">
                 <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="text" name="email"
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email"
                     :value="old('email')?old('email'):$user->email" required autofocus />
             </div>
-
-
 
             <div class="flex items-center justify-end mt-4">
 

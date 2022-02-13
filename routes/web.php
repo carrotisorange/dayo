@@ -22,7 +22,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('login', [UserController::class, 'index']);
 Route::get('user/{username}', [UserController::class, 'edit'])->name('profile');
-Route::put('user/{username}', [UserController::class, 'update']);
+Route::patch('user/{user}', [UserController::class, 'update']);
 
 Route::get('newsletter', [NewsletterController::class, 'create'])->name('newsletter');
 Route::post('newsletter', [NewsletterController::class, 'store']);

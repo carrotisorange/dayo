@@ -17,8 +17,10 @@ class CreateCourtsTable extends Migration
             $table->id();
             $table->string('court');
             $table->string('slug');
-            $table->longText('description')->nullable();
+            $table->longText('description');
             $table->string('mobileNumber');
+            $table->double('price', 15,8);
+            $table->string('status')->default('active');
             $table->foreignId('region_id')->constrained();
             $table->foreignId('barangay_id')->constrained();
             $table->foreignId('city_id')->constrained();

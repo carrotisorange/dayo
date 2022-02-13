@@ -54,7 +54,6 @@
                     </x-slot>
 
                     <x-slot name="content">
-
                         <x-dropdown-link href="/user/{{ Auth::user()->username }}">
                             Profile
                         </x-dropdown-link>

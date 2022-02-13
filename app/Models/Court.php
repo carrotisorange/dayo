@@ -20,7 +20,14 @@ class Court extends Model
         'province_id',
         'country_id',
         'user_id',
-        'thumbnail'
+        'thumbnail',
+        'status',
+        'price'
+    ];
+
+    protected $attributes = [
+        'status' => 'active',
+        'description' => 'null'    
     ];
 
     public function getRouteKeyName()

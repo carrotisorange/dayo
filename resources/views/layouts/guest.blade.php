@@ -15,21 +15,15 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+
+        {{-- Alpine.js --}}
+            <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
     </head>
     <body class="font-sans antialiased">
             <div class="min-h-screen bg-gray-100">
-               
-        
                 <main>
                     {{ $slot }}
-        
-        
                 </main>
-        
-                <div class="sticky top-[100vh] mt-10">
-                    @include('layouts.footer')
-                </div>
             </div>
-        
         </body>
 </html>

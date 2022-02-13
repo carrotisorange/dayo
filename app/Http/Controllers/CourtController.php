@@ -36,14 +36,12 @@ class CourtController extends Controller
 
     public function search(Request $request)
     {
-        $court = Court::paginate(5);
-
         $address = Location::get('https://'.$request->ip()); 
 
         $currentLocation = $address->cityName.', '.$address->regionName.','.$address->countryName;
 
         return view('courts.filter',[
-            'courts' => $court,
+            'courts' => Court::paginate(5),
             'currentLocation' => $currentLocation
         ]); 
     }
@@ -83,14 +81,15 @@ class CourtController extends Controller
         $attributes = request()->validate(
             [
                 'court' => 'required|max:255|string',
-                'mobileNumber' => 'required|integer',
+                'mobileNumber' => 'required',
                 'country_id' => ['required', Rule::exists('countries', 'id')],
                 'region_id' => ['required', Rule::exists('regions', 'id')],
                 'province_id' => ['required', Rule::exists('provinces', 'id')],
                 'city_id' => ['required', Rule::exists('cities', 'id')],
                 'barangay_id' => ['required', Rule::exists('barangays', 'id')],
                 'description' => 'nullable',
-                'thumbnail' => 'required|image'
+                'thumbnail' => 'required|image',
+                'price' => 'required|integer'
             ]
         );
 
@@ -100,7 +99,7 @@ class CourtController extends Controller
 
         $court = Court::create($attributes);
 
-        return redirect('/court/'.$court->slug);
+        return redirect('/court/'.$court->slug.'/edit');
     }
 
     /**

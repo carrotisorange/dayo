@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 
+use Illuminate\Validation\Rule;
+
 class Usercontroller extends Controller
 {
     /**
@@ -72,21 +74,15 @@ class Usercontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $username)
+    public function update(User $user)
     {
-
-        request()->validate([
+        $attributes = request()->validate([
             'name' => 'required|max:255',
-            'username' => 'required|unique:users|max:255',
-            'email' => 'required|email|unique:users'
+            'username' => ['required',Rule::unique('users','username')->ignore($user->id), 'max:255'],
+            'email' => ['email','required', Rule::unique('users', 'email')->ignore($user->id), 'max:255'],
         ]);
 
-        User::where('username', $username)
-        ->update([
-            'name' => request('name'),
-            'username' => request('username'),
-            'email' => request('email')
-        ]);
+        $user->update($attributes);
 
         return redirect('/user/'.request('username'));
     }
