@@ -13,9 +13,11 @@
 
             <!-- Name -->
             <div class="mt-4"> 
-              <x-form.input name="court">
-
+              <x-form.input name="court" >
               </x-form.input>
+
+              <x-form.error name="court">
+              </x-form.error>
             </div>
 
 
@@ -24,6 +26,9 @@
                 <x-form.input name="mobileNumber">
                 
                 </x-form.input>
+
+                <x-form.error name="mobileNumber">
+                </x-form.error>
             </div>
 
             <!-- Country -->
@@ -36,6 +41,8 @@
                     @endforeach
                 </x-select>
 
+                <x-form.error name="country_id">
+                </x-form.error>
             </div>
 
             <!-- Region -->
@@ -47,7 +54,8 @@
                     <option value="{{ $region->id }}" {{ old('region_id') == $region->id? 'selected': 'Select one' }}>{{ $region->region }}</option>
                     @endforeach
                 </x-select>
-
+                <x-form.error name="region_id">
+                </x-form.error>
             </div>
 
             <!-- Province -->
@@ -59,7 +67,8 @@
                     <option value="{{ $province->id }}" {{ old('province_id') == $province->id? 'selected': 'Select one' }}>{{ $province->province }}</option>
                     @endforeach
                 </x-select>
-
+                <x-form.error name="province_id">
+                </x-form.error>
             </div>
 
             <!-- City -->
@@ -71,7 +80,8 @@
                     <option value="{{ $city->id }}" {{ old('city_id') == $city->id? 'selected': 'Select one' }}>{{ $city->city }}</option>
                     @endforeach
                 </x-select>
-
+                <x-form.error name="city_id">
+                </x-form.error>
             </div>
 
             <!-- Barangay -->
@@ -83,7 +93,8 @@
                     <option value="{{ $barangay->id }}" {{ old('barangay_id') == $barangay->id? 'selected': 'Select one' }}>{{ $barangay->barangay }}</option>
                     @endforeach
                 </x-select>
-
+                <x-form.error name="barangay_id">
+                </x-form.error>
             </div>
 
             <!-- Image -->
@@ -91,6 +102,9 @@
                 <x-label for="thumbnail" :value="__('Image')" />
             
                 <x-input id="thumbnail" class="block mt-1 w-full" type="file" name="thumbnail" required />
+
+                <x-form.error name="thumbnail">
+                </x-form.error>
             </div>
 
             <div class="flex items-center justify-end mt-4">
