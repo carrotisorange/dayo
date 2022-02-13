@@ -24,23 +24,28 @@ class CourtController extends Controller
      */
     public function index(Request $request)
     {
-        $courts = Court::all();
+        $address = Location::get('https://'.$request->ip()); 
+
+        $currentLocation = $address->cityName.', '.$address->regionName.','.$address->countryName;
+    
+        return view('courts.index', 
+        [
+            'currentLocation' => $currentLocation
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        $court = Court::paginate(5);
 
         $address = Location::get('https://'.$request->ip()); 
 
-        if($address){
-            $currentLocation = $address->cityName.', '.$address->regionName.','.$address->countryName;
-        }else{
-            $currentLocation="";
-        }
-        
-        return view('courts.index', 
-        [
-            'courts'=>$courts,
-            'currentLocation' => $currentLocation
-        ]);
+        $currentLocation = $address->cityName.', '.$address->regionName.','.$address->countryName;
 
-         
+        return view('courts.filter',[
+            'courts' => $court,
+            'currentLocation' => $currentLocation
+        ]); 
     }
 
     /**

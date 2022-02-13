@@ -31,7 +31,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/', [CourtController::class, 'index'])->middleware('auth')->name('dashboard');
 
-Route::get('court/create', [CourtController::class, 'create'])->middleware(['auth','provider','verified'])->name('create-court');
+Route::get('court/create', [CourtController::class, 'create'])->middleware(['provider','verified'])->name('create-court');
 Route::post('store', [CourtController::class, 'store'])->middleware('auth');
 Route::get('court/{court:slug}', [CourtController::class, 'show']);
 
@@ -39,3 +39,7 @@ Route::get('court/{court:slug}', [CourtController::class, 'show']);
 Route::get('my-courts', [UserCourtController::class, 'index']);
 Route::get('my-courts/{id}', [UserCourtController::class, 'edit']);
 
+
+Route::post('/search', [CourtController::class, 'search']);
+
+Route::get('/search', [CourtController::class, 'search']);
