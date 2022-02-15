@@ -22,7 +22,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
-        'role_id'
+        'role_id',
+        'avatar'
     ];
 
     /**
@@ -33,6 +34,10 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password',
         'remember_token',
+    ];
+
+    protected $attributes = [
+        'avatar' => 'avatars\avatar.png'
     ];
 
     /**

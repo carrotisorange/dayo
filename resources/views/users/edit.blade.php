@@ -2,6 +2,12 @@
 
 <x-app-layout>
 
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Profile
+        </h2>
+    </x-slot>
+
     <x-auth-card>
         <x-slot name="logo">
 
@@ -22,7 +28,7 @@
                 <x-label for="Name" :value="__('Name')" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name"
-                    :value="old('name')?old('name'):$user->name" required autofocus />
+                    :value="old('name', $user->name)" required autofocus />
             </div>
 
             <!-- username -->
@@ -30,7 +36,7 @@
                 <x-label for="username" :value="__('Username')" />
 
                 <x-input id="username" class="block mt-1 w-full" type="text" name="username"
-                    :value="old('username')?old('username'):$user->username" required autofocus />
+                    :value="old('username', $user->username)" required autofocus />
             </div>
 
             <!-- Email -->
@@ -38,7 +44,7 @@
                 <x-label for="email" :value="__('Email')" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email"
-                    :value="old('email')?old('email'):$user->email" required autofocus />
+                    :value="old('email', $user->email)" required autofocus />
             </div>
 
             <div class="flex items-center justify-end mt-4">

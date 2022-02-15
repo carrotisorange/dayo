@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Stevebauman\Location\Facades\Location;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Gate;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -40,7 +41,7 @@ class CourtController extends Controller
 
         $currentLocation = $address->cityName.', '.$address->regionName.','.$address->countryName;
 
-        return view('courts.filter',[
+        return view('courts.result',[
             'courts' => Court::paginate(5),
             'currentLocation' => $currentLocation
         ]); 

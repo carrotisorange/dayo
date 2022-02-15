@@ -2,7 +2,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            Search
         </h2>
     </x-slot>
 
@@ -12,7 +12,7 @@
                 <div class="p-6">
                     <div class="flex flex-wrap justify-center">
                         <div class="flex items-center justify-center">
-                            <form action="/search" method="POST">
+                            <form action="/result" method="POST">
                                 @csrf
                                 <div class="flex">
 

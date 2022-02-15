@@ -1,6 +1,13 @@
 @section('title', '| Newsletter')
 
 <x-app-layout>
+
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Newsletter
+        </h2>
+    </x-slot>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div
@@ -15,17 +22,14 @@
                         Get early access.</h1>
                     {{-- <p class="text-base leading-normal text-gray-600 text-center xl:text-left">.</p> --}}
                     <form action="/newsletter" method="POST">
-                    @csrf
-                    <div class="flex items-stretch mt-10">
-                        <input
-                            class="bg-white-100 rounded-lg rounded-r-none text-base leading-none text-gray-800 p-5 w-4/5 border border-transparent focus:outline-none focus:border-gray-500"
-                            name="email"
-                            type="email" 
-                            placeholder="Your Email" />
-                        <x-button
-                            >subscribe</x-button>
-                    
-                       
+                        @csrf
+                        <div class="flex items-stretch mt-10">
+                            <input
+                                class="bg-white-100 rounded-lg rounded-r-none text-base leading-none text-gray-800 p-5 w-4/5 border border-transparent focus:outline-none focus:border-gray-500"
+                                name="email" type="email" placeholder="Your Email" />
+                            <x-button>subscribe</x-button>
+
+
                         </div>
                         @error('email')
                         <span class="text-xs text-red-500">{{ $message }}</span>

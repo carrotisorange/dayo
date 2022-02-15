@@ -58,10 +58,8 @@ class Usercontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($username)
+    public function edit(User $user)
     {
-        $user = User::where('username', $username)->firstOrFail();
-
         return view('users.edit', [
             'user' => $user
         ]);

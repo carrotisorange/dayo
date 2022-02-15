@@ -1,6 +1,13 @@
 @section('title', '| My Courts')
 
 <x-app-layout>
+
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            My Courts
+        </h2>
+    </x-slot>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- This example requires Tailwind CSS v2.0+ -->
@@ -46,13 +53,16 @@
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-dark-500">
                                             @if($court->status = 'active')
-                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"> Active </span>
+                                            <span
+                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                Active </span>
                                             @else
                                             @endif
-                                           
-                                           
+
+
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-dark-500">{{ number_format($court->price, 2) }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-dark-500">{{
+                                            number_format($court->price, 2) }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <a href="#" class="text-indigo-600 hover:text-indigo-900"><a
                                                     href="/court/{{ $court->slug }}/edit"><span
